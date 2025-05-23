@@ -9,6 +9,8 @@ COMPUTE_NODES ?= 2
 
 OCI_BIN ?= docker
 
+# License targets
+include make/license.mk
 
 build:
 	hack/build-go.sh
