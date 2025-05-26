@@ -21,7 +21,7 @@ COPY . .
 RUN ./hack/build-go.sh
 RUN rm -rf /usr/src/whereabouts/.git /usr/src/whereabouts/vendor
 
-FROM nvcr.io/nvidia/distroless/go:v3.1.6
+FROM nvcr.io/nvidia/distroless/go:v3.1.10
 LABEL org.opencontainers.image.source=https://nvcr.io/nvidia/cloud-native/whereabouts
 COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/whereabouts .
 COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/ip-control-loop .
