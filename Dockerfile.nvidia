@@ -20,7 +20,7 @@ WORKDIR $GOPATH/src/github.com/Mellanox/whereabouts/whereabouts
 COPY . .
 RUN ./hack/build-go.sh
 
-FROM nvcr.io/nvidia/distroless/go:v3.1.6
+FROM nvcr.io/nvidia/distroless/go:v3.1.8
 LABEL org.opencontainers.image.source=https://nvcr.io/nvidia/cloud-native/whereabouts
 COPY --from=0 /go/src/github.com/github.com/Mellanox/whereabouts/bin/whereabouts .
 COPY --from=0 /go/src/github.com/github.com/Mellanox/whereabouts/bin/ip-control-loop .
