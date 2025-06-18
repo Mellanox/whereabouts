@@ -27,7 +27,7 @@ COPY --from=0 /go/src/github.com/github.com/Mellanox/whereabouts/bin/ip-control-
 COPY --from=0 /go/src/github.com/github.com/Mellanox/whereabouts/bin/node-slice-controller .
 
 # Provide the source code and license in the container
-COPY --from=0 /usr/src/whereabouts
+COPY --from=0 /usr/src/whereabouts .
 COPY script/install-cni.sh .
 COPY script/lib.sh .
 COPY script/token-watcher.sh .
