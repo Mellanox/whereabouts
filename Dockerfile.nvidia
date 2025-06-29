@@ -28,6 +28,7 @@ COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/node-slice-controller 
 
 # Provide the source code and license in the container
 COPY --from=0 /usr/src/whereabouts .
+RUN rm -rf vendor .git
 COPY script/install-cni.sh .
 COPY script/lib.sh .
 COPY script/token-watcher.sh .
