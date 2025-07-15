@@ -19,7 +19,7 @@ RUN mkdir -p $GOPATH/src/github.com/Mellanox/whereabouts
 WORKDIR $GOPATH/src/github.com/Mellanox/whereabouts
 COPY . .
 RUN ./hack/build-go.sh
-RUN rm -rf vendor .git
+RUN rm -rf /usr/src/whereabouts/.git /usr/src/whereabouts/vendor
 
 FROM nvcr.io/nvidia/distroless/go:v3.1.6
 LABEL org.opencontainers.image.source=https://nvcr.io/nvidia/cloud-native/whereabouts
