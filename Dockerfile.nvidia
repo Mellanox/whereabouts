@@ -21,7 +21,7 @@ COPY . .
 RUN ./hack/build-go.sh
 RUN rm -rf /usr/src/whereabouts/.git /usr/src/whereabouts/vendor
 
-FROM nvcr.io/nvidia/distroless/go:v3.1.10
+FROM nvcr.io/nvidia/doca/doca:3.0.0-base-rt-host
 LABEL org.opencontainers.image.source=https://nvcr.io/nvidia/cloud-native/whereabouts
 COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/whereabouts .
 COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/ip-control-loop .
@@ -29,6 +29,10 @@ COPY --from=0 /go/src/github.com/Mellanox/whereabouts/bin/node-slice-controller 
 
 # Provide the source code and license in the container
 COPY --from=0 /usr/src/whereabouts .
+
+# Create symlink for /bin/sh to /usr/bin/bash for compatibility with source command
+RUN mkdir -p /bin && ln -sf /usr/bin/bash /bin/sh
+
 COPY script/install-cni.sh .
 COPY script/lib.sh .
 COPY script/token-watcher.sh .
